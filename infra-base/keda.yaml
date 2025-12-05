@@ -1,42 +1,42 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: keda
-  namespace: argocd
-spec:
-  project: default
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: keda
+#   namespace: argocd
+# spec:
+#   project: default
 
-  source:
-    repoURL: 'https://kedacore.github.io/charts'
-    chart: keda
-    targetRevision: '2.18.1'
+#   source:
+#     repoURL: 'https://kedacore.github.io/charts'
+#     chart: keda
+#     targetRevision: '2.18.1'
 
-    helm:
-      valuesObject:
-        resources:
-          operator:
-            limits:
-              cpu: 500m
-              memory: 500Mi
-            requests:
-              cpu: 50m
-              memory: 100Mi
-          metricServer:
-            limits:
-              cpu: 100m
-              memory: 200Mi
-            requests:
-              cpu: 50m
-              memory: 100Mi
+#     helm:
+#       valuesObject:
+#         resources:
+#           operator:
+#             limits:
+#               cpu: 500m
+#               memory: 500Mi
+#             requests:
+#               cpu: 50m
+#               memory: 100Mi
+#           metricServer:
+#             limits:
+#               cpu: 100m
+#               memory: 200Mi
+#             requests:
+#               cpu: 50m
+#               memory: 100Mi
 
-  destination:
-    server: 'https://kubernetes.default.svc'
-    namespace: keda
+#   destination:
+#     server: 'https://kubernetes.default.svc'
+#     namespace: keda
     
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
-      - ServerSideApply=true
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#     syncOptions:
+#       - CreateNamespace=true
+#       - ServerSideApply=true
