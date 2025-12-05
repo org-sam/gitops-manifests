@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: infra-base-parent
+  name: infra-base
   namespace: argocd
 spec:
   project: default
