@@ -5,19 +5,34 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  sources:
-    - repoURL: 'https://kedacore.github.io/charts'
-      chart: keda
-      targetRevision: '2.18.1'
-      helm:
-        valueFiles:
-          - $values/addons/keda-values.yaml
-    - repoURL: 'https://github.com/org-sam/infra-gitops.git'
-      targetRevision: HEAD
-      ref: values
+
+  source:
+    repoURL: 'https://kedacore.github.io/charts'
+    chart: keda
+    targetRevision: '2.18.1'
+
+    helm:
+      valuesObject:
+        resources:
+          operator:
+            limits:
+              cpu: 500m
+              memory: 500Mi
+            requests:
+              cpu: 50m
+              memory: 100Mi
+          metricServer:
+            limits:
+              cpu: 100m
+              memory: 200Mi
+            requests:
+              cpu: 50m
+              memory: 100Mi
+
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: keda
+    
   syncPolicy:
     automated:
       prune: true
