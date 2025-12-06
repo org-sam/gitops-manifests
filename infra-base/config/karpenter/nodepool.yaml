@@ -36,5 +36,6 @@ spec:
     cpu: 100
     memory: 256Gi
   disruption:
-    consolidationPolicy: WhenEmptyOrUnderutilized
     consolidateAfter: 30s
+    consolidationPolicy: WhenEmpty
+    expireAfter: Never

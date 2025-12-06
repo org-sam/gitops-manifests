@@ -9,7 +9,7 @@ spec:
       elements:
       - name: dev-demo
         server: https://kubernetes.default.svc
-        node_role: arn:aws:iam::703669458031:role/eks-node-initial-eks-node-group-20251205231303599500000003
+        node_role_name: eks-node-initial-eks-node-group-20251205231303599500000003
 
   template:
     metadata:
@@ -26,7 +26,7 @@ spec:
         helm:
           valuesObject:
             clusterName: '{{name}}'
-            nodeRole: '{{node_role}}'
+            nodeRole: '{{node_role_name}}'
 
       destination:
         server: "{{server}}"
