@@ -1,4 +1,4 @@
-# apiVersion: v2
-# name: karpenter-config
-# version: 1.0.0
-# type: application
+apiVersion: v2
+name: karpenter-config
+version: 1.0.0
+type: application
